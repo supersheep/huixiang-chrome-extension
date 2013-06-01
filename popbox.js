@@ -196,9 +196,6 @@
             WriteBox.init(content);
             WriteBox.on("add",function(json){
                 Mbox.success("添加成功");
-                setTimeout(function(){
-                    location.href="/piece/"+json.msg.id
-                },250);
             });
             WriteBox.on("err",function(){
                 Mbox.fail("发送错误");
