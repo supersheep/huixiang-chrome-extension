@@ -66,14 +66,16 @@
     border-radius: 0 0 3px 3px;
 }
 
-.share{
+
+.huixiang-mbox-win .share{
     float: right;
     margin: 5px 10px 0 0;
     position: relative;
     top: -2px;
 }
 
-.share .lbl{   
+
+.huixiang-mbox-win .share .lbl{   
     color:#fff;
     font-size: 12px;
     height: 20px;
@@ -81,7 +83,7 @@
     display: inline-block;
 }
 
-.share .sharebtn{
+.huixiang-mbox-win .share .sharebtn{
     background-image: url("http://huixiang.im/static/img/share_icons.png");
     width: 24px;
     height: 19px;
@@ -107,7 +109,7 @@
     background-position: -72px -20px;
 }
 
-.mbox-content .btn:hover{
+.huixiang-mbox-win .mbox-content .btn:hover{
     background-color: rgb(105, 93, 82);
 }
 
