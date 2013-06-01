@@ -36,13 +36,12 @@ $(function(){
             link.insertAfter(like);
             link.click(clipMe);
             bar.data("clip",$([link[0],spliter[0]]));
-        }else{
-            clip.show();
         }
-    }).delegate(".WB_detail,.WB_media_expand","mouseleave",function(){
-        var clip = $(this).data("clip");
-        clip && clip.hide();
-    });
+    })
+    // .delegate(".WB_detail,.WB_media_expand","mouseleave",function(){
+    //     var clip = $(this).data("clip");
+    //     clip && clip.hide();
+    // });
     
 
 });
