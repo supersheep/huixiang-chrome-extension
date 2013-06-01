@@ -1,0 +1,39 @@
+{
+  "name": "茴香",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description":"记下值得珍藏的话语",
+  "background":{
+    "scripts":["contextMenu.js"]
+  },
+  "icons":{
+    "16":"huixiang_16.png",
+    "48":"huixiang_48.png",
+    "128":"huixiang_128.png"
+  },
+  "browser_action":{
+    "default_icon": "huixiang_16.png",
+    "default_popup": "popup.html"
+  },
+  "options_page":"option.html",
+  "update_url":"http://huixiang.spud.in/extensions/updateinfo.xml",
+  "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["jquery.js","event.js","popbox.js","weibo.js","select-detection.js"],
+      "css":["popbox.css"]
+    }
+  ],
+  "web_accessible_resources":[
+    "jquery.js",
+    "event.js",
+    "popbox.js",
+    "weibo.js",
+    "select-detection.js"
+  ],
+  "permissions":[
+    "tabs",
+    "contextMenus",
+    "storage"
+  ]
+}
