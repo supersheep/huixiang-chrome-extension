@@ -1,13 +1,18 @@
 $(function(){
     function clipMe(){
         var item = $(this).closest(".WB_detail,.WB_media_expand");
-        var text = item.find(".WB_text").text().trim();
+        var text = item.find(".WB_text");
+        if(text.length == 2){
+            text = text.eq(0);
+        }
+        text = text.text().trim();
         var time = item.find(".WB_time");
         if(time.length == 2){
             time = time.eq(1);
         }
         var link = "http://weibo.com" + time.attr("href");
 
+        $.post("http://huixiang.im/add/");
 
         popBox.pop(text+link);
         return false;
