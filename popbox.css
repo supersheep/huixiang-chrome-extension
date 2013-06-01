@@ -8,7 +8,7 @@
 .huixiang-mbox-win .succ,.huixiang-mbox-win .err{
     width:16px;
     height:16px;
-    background-image:url("../img/hint-icons.png");
+    background-image:url("http://huixiang.im/static/img/hint-icons.png");
     background-repeat:no-repeat;
     display: block;
     position: absolute;
@@ -82,7 +82,7 @@
 }
 
 .share .sharebtn{
-    background-image: url("/static/img/share_icons.png");
+    background-image: url("http://huixiang.im/static/img/share_icons.png");
     width: 24px;
     height: 19px;
     position: relative;
@@ -126,3 +126,44 @@
     color: #fff;
     cursor: pointer;
 }
+
+
+.huixiang-mbox-win .linkbox{
+   text-align: right;
+   padding: 5px 20px;
+   font-size: 12px;
+   margin-top: -15px;
+}
+
+
+.huixiang-mbox-win .linkbox a{
+   color:#666;
+}
+/*
+.succ{
+   text-align: center;
+   margin: 10px auto;
+}
+.succ a{
+   color:#666;
+   margin: 0 5px;
+   font-size: 13px;
+}
+.succ .gnc{
+   color:#333;
+}
+.box-title{
+  background-color: rgb(60, 58, 55);
+  color:#fff;
+  padding:5px;
+  text-align: center;
+}
+.box-login-body{
+  text-align: center;
+}
+.login_douban{
+  margin-right: 10px;
+}
+.login_weibo{
+  margin-left: 10px;
+}*/

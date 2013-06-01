@@ -12,9 +12,7 @@ $(function(){
         }
         var link = "http://weibo.com" + time.attr("href");
 
-        $.post("http://huixiang.im/add/");
-
-        popBox.pop(text+link);
+        popBox.pop(text,link);
         return false;
     }
 
