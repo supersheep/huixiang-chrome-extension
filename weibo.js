@@ -1,8 +1,13 @@
 $(function(){
     function clipMe(){
         var item = $(this).closest(".WB_detail,.WB_media_expand");
-        var text = item.find(".WB_text").eq(0).text().trim();
-        var link = "http://weibo.com" + item.children(".WB_func").find(".WB_time").eq(0).attr("href");
+        var text = item.find(".WB_text").text().trim();
+        var time = item.find(".WB_time");
+        if(time.length == 2){
+            time = time.eq(1);
+        }
+        var link = "http://weibo.com" + time.attr("href");
+
 
         popBox.pop(text+link);
         return false;
@@ -13,11 +18,11 @@ $(function(){
         return;
     }
 
-    console.log($("#pl_content_homeFeed").delegaate);
-    $("#pl_content_homeFeed").delegate(".WB_detail,.WB_media_expand","mouseenter",function(){
+    $("#pl_content_homeFeed,#pl_content_hisFeed,#pl_content_weiboDetail").delegate(".WB_detail,.WB_media_expand","mouseenter",function(){
         var bar = $(this)
-            , like = bar.children(".WB_func").find("[action-type=feed_list_like]").eq(0).next()
-            , spliter = $('<i class="S_txt3">|</i>')
+            , like = bar.find("[title=赞]").next()
+        if(like.length == 2){like = like.eq(1);}
+        var spliter = $('<i class="S_txt3">|</i>')
             , link = $('<a href="javascript:;">摘下</a>')
             , clip = bar.data("clip");
 
