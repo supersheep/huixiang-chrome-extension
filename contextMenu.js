@@ -1,6 +1,6 @@
 
 // Create one test item for each context type.
-var contexts = ["selection"];
+
 
 chrome.contextMenus.create({
   "title":"将这一句记录到\"茴香\"",
@@ -15,6 +15,5 @@ chrome.extension.onRequest.addListener(function(request, sender, sendResponse){
     console.log(sender);
     console.log(request);
     console.log(sender.tab ? "from a content script:" + sender.tab.url : "from the extension");
-    sendResponse("I'm the response.");
-
+    sendResponse(request+"I'm the response.");
 });
