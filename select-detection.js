@@ -83,8 +83,18 @@ function getAndDetermine(){
     }
 }
 
+function words(text){
+    var len;
+    if(text.match(/\w/)){
+        len = text.match(/\w+/g).length + text.match(/[^\w\s]/g).length;
+    }else{
+        len = text.length;
+    }
+    return len;
+}
+
 function determine(text){
-    if(!text || text.length > LIMIT || text.length < 5){
+    if(!text || text.length > LIMIT || words(text) < 5){
         return false;
     }else{
         return true;
