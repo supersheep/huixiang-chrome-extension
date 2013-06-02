@@ -16,11 +16,6 @@ $(function(){
         return false;
     }
 
-
-    if(!location.host.match("weibo.com")){
-        return;
-    }
-
     $("#pl_content_homeFeed,#pl_content_hisFeed,#pl_content_weiboDetail").delegate(".WB_detail,.WB_media_expand","mouseenter",function(){
         var bar = $(this)
             , like = bar.find("[title=赞]").next()

@@ -1,5 +1,8 @@
 (function(){
 
+if(location.href.match("weibo.com"))return;
+
+
 var LIMIT = 100;
     var btn = document.createElement("img");
 
@@ -81,10 +84,7 @@ function getAndDetermine(){
 }
 
 function determine(text){
-    if(!text || text.length > LIMIT){
-        if(text.length > LIMIT){
-            showHint("茴香不支持"+LIMIT+"字以上的句子");
-        }
+    if(!text || text.length > LIMIT || text.length < 5){
         return false;
     }else{
         return true;
