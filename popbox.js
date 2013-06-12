@@ -16,7 +16,8 @@
         sharebtns.on("click",function(e){
             e.preventDefault();
             $(this).toggleClass("active")
-        })
+        });
+
         btn.on("click",function(){
             var val = textarea.val().trim();
             var share = [];
@@ -28,7 +29,8 @@
                 var type = $(el).attr("data-type");
                 share.push(type);
             });
-            
+
+
             if(!posting){
                 posting = true;
                 $.ajax({
@@ -174,36 +176,54 @@
 
 
     win.popBox = {
+        check:function(ok){
+            $.ajax({
+                url:"http://huixiang.im/ajax/userinfo",
+                dataType:"json"
+            }).success(function(json){
+                var sure;
+                posting = false;
+                if(json.code == 403){
+                    sure = confirm("请先登录");
+                    if(sure){window.open("http://huixiang.im")}
+                    return;
+                }else{
+                    ok();
+                }
+            });
+        },
         pop:function(text,link){
-            var shortlink = link.length > 36 ? (link.slice(0,36)+"...") : link;
-            var html = '<div class="box-text">'
-                +'<textarea class="textarea" value="' + text + '" placeholder="记一句..." maxlength="' + WriteBox.LIMIT + '">' + text + '</textarea>'
-                +'</div>'
-                +'<div class="linkbox">来自：<a href="' + link + '" target="_blank" class="link">' + shortlink + '</a>'
-                +'</div>'
-                +'<div class="box-bottom">'
-                +'<div class="hint" style="display:none;">最多只能输入'+WriteBox.LIMIT+'个字</div><a class="btn" href="#">好了</a>'
-                +'<div class="share">'
-                  +'<span class="lbl">分享：</span>'
-                    +'<a href="#toweibo" id="toweibo" data-type="weibo" class="sharebtn"></a>'
-                    +'<a href="#todouban" id="todouban" data-type="douban" class="sharebtn"></a>'
-                +'</div>'
-                +'</div>';
-            var content = $(html);
-            var write_box = new Mbox({
-                content:content
-            }).open();
-            WriteBox.init(content);
-            WriteBox.on("add",function(json){
-                Mbox.success("添加成功");
-            });
-            WriteBox.on("err",function(){
-                Mbox.fail("发送错误");
-            });
-            WriteBox.on("done",function(id){
-                setTimeout(function(){
-                    Mbox.close();
-                },1000);
+            popBox.check(function(){
+                var shortlink = link.length > 36 ? (link.slice(0,36)+"...") : link;
+                var html = '<div class="box-text">'
+                    +'<textarea class="textarea" value="' + text + '" placeholder="记一句..." maxlength="' + WriteBox.LIMIT + '">' + text + '</textarea>'
+                    +'</div>'
+                    +'<div class="linkbox">来自：<a href="' + link + '" target="_blank" class="link">' + shortlink + '</a>'
+                    +'</div>'
+                    +'<div class="box-bottom">'
+                    +'<div class="hint" style="display:none;">最多只能输入'+WriteBox.LIMIT+'个字</div><a class="btn" href="#">好了</a>'
+                    +'<div class="share">'
+                      +'<span class="lbl">分享：</span>'
+                        +'<a href="#toweibo" id="toweibo" data-type="weibo" class="sharebtn"></a>'
+                        +'<a href="#todouban" id="todouban" data-type="douban" class="sharebtn"></a>'
+                    +'</div>'
+                    +'</div>';
+                var content = $(html);
+                var write_box = new Mbox({
+                    content:content
+                }).open();
+                WriteBox.init(content);
+                WriteBox.on("add",function(json){
+                    Mbox.success("添加成功");
+                });
+                WriteBox.on("err",function(){
+                    Mbox.fail("发送错误");
+                });
+                WriteBox.on("done",function(id){
+                    setTimeout(function(){
+                        Mbox.close();
+                    },1000);
+                });
             });
         }
     }
