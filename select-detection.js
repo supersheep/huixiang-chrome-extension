@@ -84,8 +84,8 @@ function getAndDetermine(){
 }
 
 function words(text){
-    var len;
-    if(text.match(/\w/)){
+    var len,match;
+    if(text.match(/\w+/g) && text.match(/[^\w\s]/g)){
         len = text.match(/\w+/g).length + text.match(/[^\w\s]/g).length;
     }else{
         len = text.length;
